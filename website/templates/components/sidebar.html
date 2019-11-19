@@ -1,0 +1,84 @@
+<div class="sidebar-wrapper">
+    <div class="widget recent__links">
+        <h4 class="widget-title">Shop Categories</h4>
+        <ul>
+            {% for n, value in categories %}
+            <li>
+                <a href="{% url 'maksim:category' value|lower %}">{{ value }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="widget">
+        <h4 class="widget-title">Najnoviji Artikli</h4>
+        <ul id="recent_items">
+            {% for product in recent_products %}
+            <a href="{%url 'maksim:detail' product.id %}" class="recent__items-product">
+                <li class="recent__items-product">
+                
+                    <div class="recent__items-product-image">
+                        <img src="{{product.image.url}}" alt="{{product.title}}"/>
+                    </div>
+                    <div class="recent_items-product-title">
+                        <h4> {{ product.title|title}}</h4>
+                    </div>
+                    <ul class="recent_items-product-price">
+                        <li class="green">
+                            <span>{{product.price}} rsd</span>
+                        </li>
+                        <li class="icons">
+                            <i class="fab fa-facebook-square"></i>
+                            <i class="fab fa-facebook-messenger"></i>
+                        </li>
+                    </ul>
+                    
+                </li>
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="widget">
+        <h4 class="widget-title">Popularni Artikli</h4>
+        <ul id="recent_items">
+            {% for product in popular_products %}
+            <a class="recent__items-product" href="{% url 'maksim:detail' product.id %}">
+                <li class="recent__items-product">
+                    <div class="recent__items-product-image">
+                        <img src="{{product.image.url}}" alt="{{product.title}}"/>
+                    </div>
+                    <div class="recent_items-product-title">
+                        <h4> {{ product.title|title}}</h4>
+                    </div>
+                    <ul class="recent_items-product-price">
+                        <li class="green">
+                            <span>{{product.price}} rsd</span>
+                        </li>
+                        <li class="icons">
+                            <i class="fab fa-facebook-square"></i>
+                            <i class="fab fa-facebook-messenger"></i>
+                        </li>
+                    </ul>
+                </li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="widget subscribe">
+        <div class="subscribe__title">
+            <h4 class="subscribe__title">Subscribe for latest offers</h4>
+        </div>
+        <div class="subscribe__body">
+            <p>Subscribe to Our Newsletter to get Important News, Amazing Offers & inside Scoops
+        </div>
+        <form method="post" class="subscribe__form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.email }}
+                <button type="submit" class="btn submit-btn btn-success">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

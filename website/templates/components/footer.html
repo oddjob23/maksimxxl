@@ -1,0 +1,130 @@
+<div class="container">
+    <div class="footer__wrapper row">
+        <div class="col-sm-12 col-md-8 col-lg-8">
+            <div class="row ">
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <div class="widget">
+                        <div class="footer__logo">
+                            <h4 class="footer__logo--title">Maksim XXL</h4>
+                        </div>
+                        <div class="footer__text">
+                            <p>Mi verujemo u jednostavno, Kreativno & kvalitetno.</p>
+                        </div>
+                        <div class="footer__address">
+                            <address>
+                                <strong>Prodavnica: </strong>
+                                <br />
+                                Bezanijska 24, Zemun
+                                <br />
+                                Beograd, 11000
+                                <br />
+                            </address>
+                            <abbr title="Phone Number"><strong>Telefon:</strong></abbr>
+                            011 2610432
+                            <br />
+                            <abbr title="Email Address"><strong>Email:</strong></abbr>
+                            maksimxxl@gmail.com
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <div class="blog_roll">
+                        <h4>Novosti</h4>
+                        <ul class="blog_roll-list">
+                            <li><a href="#">Najnovija kolekcija</a></li>
+                            <li><a href="#">Jesen 2019</a></li>
+                            <li><a href="#">Leto</a></li>
+                            <li><a href="#">Izdvajamo iz ponude</a></li>
+                            <li><a href="#">Snizenje</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <div id="post_list_footer">
+                        <div class="widget posts">
+                            <h4 class="text-capitalize">Najnovije Vesti</h4>
+                            <div class="post">
+                                <h5 class="post__title">Iskoristite praznici popust od 20% na sve nase artikle do 20.11.2019</h5>
+                                <p class="post_date small">Novembar, 2019</p>
+                            </div>
+                        </div>
+                        <div class="widget posts">
+                            <div class="post">
+                                <h5 class="post__title">Popust za pretplacene korisnike do kraja 2019</h5>
+                                <p class="post_date small">Septembar 2019</p>
+                            </div>
+                        </div>
+                        <div class="widget posts">
+                            <div class="post">
+                                <h5 class="post__title">Pratite nas na Facebook-u i na Instagramu, cekaju vas brojne akcije i snizenja</h5>
+                                <p class="post_date small">Avgust, 2019</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-8 mt-sm-5 mt-lg-0 col-lg-4">
+            <div class="widget subscribe">
+                <h4> Newsletter </h4>
+                <h5>
+                <strong>Upisi se</strong> 
+                na Maksim Newsletter i budi prvi koji ce saznati za nove kolekcije &amp; popuste
+                </h5>
+                <div class="widget-subscribe-form-result"></div>
+                <form  method="post">
+                        {% csrf_token %}
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-paper-plane"></i></div>
+                        </div>
+                        {{ form.email }}
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit">Subscribe</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+<div id="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="small"> Copyrights © 2019<br/> Sva prava zadrzana / All Rights Reserved by <span class="text-underline"> MaksimXXL.</span></p>
+                <p class="small">
+                    <a href="#">Terms of Use</a> / <a href="#"> Privacy Policy</a>
+                </p>
+            </div>
+            <div class="col">
+                <ul class="d-flex social-icons">
+                    <li>
+                        <a href="">
+                            <i class="fas fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fas fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fas fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fas fa-facebook"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

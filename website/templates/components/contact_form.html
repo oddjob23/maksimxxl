@@ -1,0 +1,28 @@
+<form method="POST" action="">
+{% csrf_token %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="name">Vase ime:</label>
+                    {{contact_form.name}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                {{ contact_form.email }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="message"> Poruka: </label>
+                {{ contact_form.message }}
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-lg btn-success">Send</button>
+</form>

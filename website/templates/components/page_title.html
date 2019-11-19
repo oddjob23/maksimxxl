@@ -1,0 +1,17 @@
+<section id="page-title">
+    <div class="container">
+    {% if product %}
+        <h1>{{product.title|title}}</h1>
+        <span>Zapocni svoju omiljenu kupovinu</span>
+    {% else %}
+        <h1>Shop</h1>
+        <span>Zapocni svoju omiljenu kupovinu</span>
+    {% endif %}
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Pocetna</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Shop</li>
+        </ol>
+    </div>
+</section>

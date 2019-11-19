@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Maksim XXL | Butik za veliku gospodu</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round:400,400i&display=swap" rel="stylesheet">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/all.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/icon-font.css'%}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    {% block additional_resources %}
+
+    {% endblock%}
+</head>
+
+<body class="stretched" data-spy="scroll" data-target=".navbar" data-offset="100">
+    {% comment %} navigation {% endcomment %}
+    {% include 'components/navigation.html'%}
+    {% comment %} end navigation {% endcomment %}
+    {% comment %} page title {% endcomment %}
+    {% include 'components/page_title.html'%}
+    {% comment %} end page title {% endcomment %}
+
+    <div class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-lg-3 sidebar order-sm-2 order-xs-2 order-lg-1">
+                    <aside class=" mb-0">
+                        {% include 'components/sidebar.html'  %}
+                    </aside>
+                </div>
+                <div class="col-sm-12 main col-lg-9 order-sm-1 order-lg-2 order-xs-1">
+                    <main>
+                            {% block content %}
+                            {% endblock %}
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        {% include 'components/footer.html' %}
+    </footer>
+    <script src="{% static 'js/jquery.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/main.js'%}"></script>
+    {% block additional_scripts %}
+
+    {% endblock %}
+</body>
+
+</html>

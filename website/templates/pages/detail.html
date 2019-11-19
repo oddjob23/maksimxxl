@@ -1,0 +1,197 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="row mb-5">
+    <div class="col-lg-6">
+        <div class="product__image">
+            {% if product.discount > 0 %}
+            <div class="discount">
+                <span>{{product.discount}}% Off*</span>
+            </div>
+            {% endif %}
+            <img src="{{product.image.url}}" alt="{{product.title}}" class="img-fluid" />
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="row prodcut__meta--row">
+            <div class="col d-flex align-items-center">
+                <div class="product__meta">
+                    <div class="product__price">
+                        {% if product.discount > 0 %}
+                        <p class="text-left">
+                            <del> {{ product.price }} RSD </del>
+                            <ins> {{ product.discount_price }} RSD </ins>
+                        </p>
+                        {% else %}
+                        <p class="text-center">
+                            {{ product.price }} RSD
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-center justify-content-end">
+                <p class="text-right pt-2">
+                    <a href="#">Imate pitanje?</a>
+                </p>
+            </div>
+        </div>
+        <div class="hr-line"></div>
+        <div class="product_description">
+            <p class="margin-20">{{product.description}}</p>
+        </div>
+        <div class="options">
+            <ul class="list">
+                <li>
+                    <i class="icon-caret-right"></i>
+                    Veliki izbor boja</li>
+                <li>
+                    <i class="icon-caret-right"></i>
+                    Najveci izbog velicina, od 2XL do 12XL</li>
+                <li>
+                    <i class="icon-caret-right"></i>
+                    Dostava na kucnu adresu</li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-body meta">
+                <p>
+                    <span>ID: <span class="green">{{product.id}}</span></span>
+                    <span>Kategorija: <span class="green">{{product.get_category_display}}</span></span>
+                </p>
+            </div>
+        </div>
+        <div class="share d-flex align-items-center">
+            <p>Podeli:</p>
+            <ul class="social__icons">
+                <li>
+                    <a href="#" class="social-icon si-borderless hover-facebook no-border">
+                        <i class="icon-facebook"></i>
+                        <i class="icon-facebook"></i>
+                    </a>
+
+                </li>
+                <li>
+
+                    <a href="#" class="social-icon si-borderless hover-twitter no-border">
+                        <i class="icon-twitter"></i>
+                        <i class="icon-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="social-icon si-borderless hover-pinterest no-border">
+                        <i class="icon-pinterest"></i>
+                        <i class="icon-pinterest"></i>
+                    </a>
+
+                </li>
+                <li>
+
+
+                    <a href="#" class="social-icon si-borderless hover-gplus no-border">
+                        <i class="icon-gplus"></i>
+                        <i class="icon-gplus"></i>
+                    </a>
+
+                </li>
+                <li>
+
+
+                    <a href="#" class="social-icon si-borderless hover-rss no-border">
+                        <i class="icon-rss"></i>
+                        <i class="icon-rss"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="social-icon si-borderless hover-mail no-border">
+                        <i class="icon-email3"></i>
+                        <i class="icon-email3"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="bg-light nav-item nav-link active" id="nav-description-tab" data-toggle="tab"
+                    href="#nav-description" role="tab" aria-controls="nav-home" aria-selected="true">
+                    <i class="icon-align-justify2"></i>
+                    Opis <a/>
+                <a class="nav-item nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab"
+                    aria-controls="nav-info" aria-selected="false">
+                    <i class="icon-info-sign"></i>
+                   Dodatne informacije  </a>
+                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                    aria-controls="nav-contact" aria-selected="false">Pitanja?  </a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
+                aria-labelledby="nav-description-tab">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore explicabo nemo, quos suscipit
+                    mollitia quisquam unde voluptatum molestiae et eaque veritatis quia delectus modi, voluptas aut
+                    maiores est! Maxime, aperiam!</p>
+            </div>
+            <div class="tab-pane fade" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
+
+                <table class="table table-striped table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>Velicina</td>
+                            <td>{% for size in product.size.all %}
+                                <span>{{size.get_size_display}}</span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Boja
+
+                            <td>
+                                {% for color in product.colors.all %}
+                                <span>{{color.get_color_display}}</span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Struk</td>
+                            <td>{{product.waist}} cm</td>
+                        </tr>
+                        <tr>
+                            <td>Duzina</td>
+                            <td>{{product.length}} cm</td>
+                        </tr>
+                        <tr>
+                            <td>Grudi</td>
+                            <td>{{product.chest}} cm</td>
+                        </tr>
+                        <tr>
+                            <td>Materijal</td>
+                            <td>100% pamuk</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                {% include '../components/contact_form.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+
+    <div class="col-12">
+        <h4>Slicni proizvodi</h4>  
+        {% include '../components/carousel.html'%}
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_scripts %}
+    {% load static %}
+    <script src="{% static 'js/owl.carousel.js' %}"></script>
+    <script src="{% static 'js/carousel.js'%}"></script>
+{% endblock %}

@@ -1,0 +1,76 @@
+<div id="oc-product" class="owl-carousel product-carousel carousel-widget owl-loaded owl-drag" data-margin="30"
+  data-pagi="false" data-autoplay="1000" data-items-xs="1" data-items-md="2" data-items-lg="3" data-items-xl="4">
+  <div class="owl-stage-outer">
+      <div class="owl-stage d-flex">
+        {% for product in products_related %}
+        <div class="owl-item" style="width: 262.5px; margin-right: 30px;">
+          <div class="oc-item">
+            <div class="product__image">
+              {% if product.discount > 0 %}
+              <div class="discount">
+                <span>{{product.discount}}% Off*</span>
+              </div>
+              {% endif %}
+              <img src="{{product.image.url}}" alt="{{product.title}}" class="img-fluid product_image"/>
+              <div class="product__overlay">
+                <a href="{% url 'maksim:detail' product.id%}" class="product__view--details">
+                  <i class="fas fa-info-circle"></i>
+                  Saznaj Vise </a>
+                <a href="#" class="product__view--share ">
+                  <i class="fas fa-share-square"></i>
+                  Podeli </a>
+              </div>
+            </div>
+            <div class="product__meta">
+              <div class="product__title">
+                <h3 class="text-center">
+                  <a href="#"> {{ product.title }} </a>
+                </h3>
+              </div>
+              <div class="product__price">
+                {% if product.discount > 0 %}
+                <p class="text-center">
+                  <del> {{ product.price }} RSD </del>
+                  <ins> {{ product.discount_price }} RSD </ins>
+                </p>
+                {% else %}
+                <p class="text-center">
+                  {{ product.price }} RSD
+                </p>
+                {% endif %}
+              </div>
+              {% if product.colors.all %}
+              <div class="product__colors">
+                <ul class="colors">
+                  <span class="pr-2"><strong> Boje: </strong></span>
+                  {% for color in product.colors.all %}
+                  <li class="color-{{color.get_color_display}} {{color.get_color_display}}"></li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+              {% if product.size.all%}
+              <div class="product__size">
+                <span class="lead pr-2"><strong>Velicine: </strong></span>
+                {% for size in product.size.all %}
+                <span class="lead"> <strong>{{ size.get_size_display }}</strong> </span>
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      <div class="owl-nav">
+        <button type="button" role="presentation" class="owl-prev">
+          <i class="icon-angle-left"></i>
+        </button>
+        <button type="button" role="presentation" class="owl-next disabled">
+          <i class="icon-angle-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="owl-dots disabled" style="display: none;"></div>
+</div>

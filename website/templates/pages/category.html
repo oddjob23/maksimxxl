@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="row">
+    {% for product in products%}
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 product">
+        <div class="product__image">
+        {% if product.discount > 0 %}
+            <div class="discount">
+                <span>{{product.discount}}% Off*</span>
+            </div>
+        {% endif %}
+            <img src="{{product.image.url}}" alt="{{product.title}}"/>
+            <div class="product__overlay">
+                <a href="{% url 'maksim:detail' product.id%}" class="product__view--details">
+                <i class="fas fa-info-circle"></i>
+                 Saznaj Vise </a>
+                <a href="#" class="product__view--share ">
+                <i class="fas fa-share-square"></i>
+                 Podeli </a>
+            </div>
+        </div>
+        <div class="product__meta">
+            <div class="product__title">
+                <h3 class="text-center">
+                    <a href="#"> {{ product.title }} </a>
+                </h3>
+            </div>
+            <div class="product__price">
+               {% if product.discount > 0 %} 
+                     <p class="text-center"> 
+                        <del> {{ product.price }} RSD </del>
+                        <ins> {{ product.discount_price }} RSD </ins>
+                    </p>
+                    {% else %}
+                     <p class="text-center"> 
+                        {{ product.price }} RSD
+                    </p>
+                {% endif %}
+            </div>
+            {% if product.colors.all %}
+            <div class="product__colors">
+                <ul class="colors">
+                <span class="pr-2"><strong> Boje: </strong></span>
+                {% for color in product.colors.all %}
+                    <li class="color-{{color.get_color_display}} {{color.get_color_display}}"></li>
+                {% endfor %}
+                </ul> 
+            </div>
+        {% endif %}   
+            {% if product.size.all%}
+            <div class="product__size">
+                <span class="lead pr-2"><strong>Velicine: </strong></span>
+                {% for size in product.size.all %}
+                    <span class="lead"> <strong>{{ size.get_size_display }}</strong> </span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

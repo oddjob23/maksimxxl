@@ -1,0 +1,8 @@
+db.sqlite3
+.vscode
+venv
+src/__pycache__/
+website/__pycache__/
+webiste/migrations/__pycache__/
+ngrok
+kite-installer
