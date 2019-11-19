@@ -19,7 +19,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 {% if collections != '' %}
                     {% for collection in collections %}
-                        <a class="dropdown-item" href="{% url 'maksim:kolekcija' collection %}"> {{ collection }} </a>
+                        <a class="dropdown-item" href="{% url 'maksim:kolekcija' collection=collection.slug %}"> {{ collection }} </a>
                     {% endfor %}
                 {% else %}
                     <a href="#" class="dropdown-item"> Kolekcije to come </a>
