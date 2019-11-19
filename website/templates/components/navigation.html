@@ -17,9 +17,14 @@
                     Kolekcije
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% if collections != '' %}
                     {% for collection in collections %}
                         <a class="dropdown-item" href="#"> {{ collection }} </a>
                     {% endfor %}
+                {% else %}
+                    <a href="#" class="dropdown-item"> Kolekcije to come </a>
+                {% endif %}
+                    
                 </div>
             </li>
             <li class="nav-item">
