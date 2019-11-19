@@ -44,14 +44,22 @@ SIZE_CHOICES = (
 
 class Collection(models.Model):
     title = models.CharField(max_length=20, null=True, blank=True)
-    slug = models.SlugField(max_length=80, null=True, blank=True)
-
+    slug = models.SlugField(
+        default='',
+        editable = False,
+        max_length=50
+    )
+    def get_absolute_url(self):
+        kwargs = {
+            "pk": self.id,
+            "slug": self.slug
+        }
+        return reverse('maksim:kolekcija', kwargs=kwargs)
+    
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super(Collection, self).save(*args, **kwargs)
-    def create(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super(Collection, self).create(*args, **kwargs)
+        value = self.title
+        self.slug = slugify(value, allow_unicode=True)
+        super().save(*args, **kwargs)
     def __str__(self):
         return self.title
 
