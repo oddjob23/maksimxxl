@@ -47,9 +47,11 @@ class Collection(models.Model):
     slug = models.SlugField(max_length=80, null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        if self.title:
-            self.slug = slugify(self.title)
-            super(Collection, self).save(*args, **kwargs)
+        self.slug = slugify(self.title)
+        super(Collection, self).save(*args, **kwargs)
+    def create(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Collection, self).create(*args, **kwargs)
     def __str__(self):
         return self.title
 
