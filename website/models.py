@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 import datetime
+from django.template.defaultfilters import slugify
 CATEGORIES = (
     ('K', 'Kosulje'),
     ('P', 'Pantalone'),
@@ -43,7 +44,12 @@ SIZE_CHOICES = (
 
 class Collection(models.Model):
     title = models.CharField(max_length=20, null=True, blank=True)
-    slug = models.SlugField(max_length=80)
+    slug = models.SlugField(max_length=80, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.title:
+            self.slug = slugify(self.title)
+            super(Collection, self).save(*args, **kwargs)
     def __str__(self):
         return self.title
 
