@@ -90,22 +90,20 @@ class ProductDetailView(DetailView):
             featured=True).order_by('-published_date')[:3]
         context['products'] = Product.objects.filter(
             published_date__lte=timezone.now()).order_by('-published_date')[:9]
-        context['products_related'] = Product.objects.filter(
-            category=context['product'].category).order_by('-published_date')[:9]
         context['form'] = SubscriberFormModel
         context['now'] = timezone.now()
         context['contact_form'] = ContactForm
         return context
 
 
-class CategoryView(ListView):
+class CollectionView(ListView):
     template_name = 'pages/category.html'
     model = Product
     context_object_name = 'products'
     form = SubscriberFormModel
 
     def get_context_data(self, **kwargs):
-        context = super(HomePageView, self).get_context_data(**kwargs)
+        context = super(CollectionView, self).get_context_data(**kwargs)
         # add a query set or custom templates
         context['categories'] = CATEGORIES = (
             ('K', 'Kosulje'),
