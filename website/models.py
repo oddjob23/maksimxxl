@@ -58,7 +58,7 @@ class Collection(models.Model):
     
     def save(self, *args, **kwargs):
         value = self.title
-        self.slug = slugify(value, allow_unicode=True)
+        self.slug = slugify(value)
         super().save(*args, **kwargs)
     def __str__(self):
         return self.title
