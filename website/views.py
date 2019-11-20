@@ -90,7 +90,7 @@ class ProductDetailView(DetailView):
             featured=True).order_by('-published_date')[:3]
         context['products'] = Product.objects.filter(
             published_date__lte=timezone.now()).order_by('-published_date')[:9]
-        product = Product.objects.get(pk=self.kwargs['pk'])
+        product = Product.objects.get(pk=self.kwargs.get('pk'))
         context['form'] = SubscriberFormModel
         context['now'] = timezone.now()
         context['contact_form'] = ContactForm
