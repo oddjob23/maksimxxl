@@ -90,11 +90,12 @@ class ProductDetailView(DetailView):
             featured=True).order_by('-published_date')[:3]
         context['products'] = Product.objects.filter(
             published_date__lte=timezone.now()).order_by('-published_date')[:9]
+        context['product'] = Product.objects.filter(id=self.kwargs['pk'])
         context['form'] = SubscriberFormModel
         context['now'] = timezone.now()
         context['contact_form'] = ContactForm
         context['collections'] = Collection.objects.all()
-        context['products_related'] = Product.objects.filter(category='product.category')
+        context['products_related'] = Product.objects.filter(category=product.category)
         return context
 
 
