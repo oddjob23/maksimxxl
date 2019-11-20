@@ -120,7 +120,7 @@ class CollectionView(ListView):
             published_date__lte=timezone.now()).order_by('-published_date')[:3]
         context['popular_products'] = Product.objects.filter(
             featured=True).order_by('-published_date')[:3]
-        context['products_collection'] = Product.objects.all(collection__slug=self.kwargs['slug']).order_by('-published_date')
+        context['products_collection'] = Product.objects.filter(collection__slug=self.kwargs['slug']).order_by('-published_date')
         context['form'] = SubscriberFormModel
         context['collections'] = Collection.objects.all()
         return context
