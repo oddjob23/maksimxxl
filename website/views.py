@@ -95,7 +95,7 @@ class ProductDetailView(DetailView):
         context['now'] = timezone.now()
         context['contact_form'] = ContactForm
         context['collections'] = Collection.objects.all()
-        context['products_related'] = Product.objects.filter(category=product.category)
+        context['products_related'] = Product.objects.filter(category=product.category).exclude(pk=self.kwargs.get('pk'))
         print(product)
         return context
 
