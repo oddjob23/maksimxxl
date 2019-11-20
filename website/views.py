@@ -93,6 +93,7 @@ class ProductDetailView(DetailView):
         context['form'] = SubscriberFormModel
         context['now'] = timezone.now()
         context['contact_form'] = ContactForm
+        context['collections'] = Collection.objects.all()
         return context
 
 
